@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ page import="entidade.Jogo, java.util.List, java.util.ArrayList" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,6 +12,19 @@
 	<div class="container">
 		<h2>Registro de Jogos</h2>
 	</div>
+	
+	<% String msg = (String)session.getAttribute("MENSAGEM");
+		List<Jogo> lista = (List<Jogo>)session.getAttribute("LISTA");
+		if (lista == null) {
+			lista = new ArrayList<Jogo>();
+		}
+		if (msg != null) {
+			session.setAttribute("MENSAGEM", null);
+		
+			%>
+		}
+	<h3 class="alert alert-danger"><%=msg%></h3>
+	<% } %>
 	
 	<form action="./JogosController" method="post">
 		<div class="container">
